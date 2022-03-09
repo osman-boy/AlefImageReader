@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiFactory {
 
-    private const val BASE_URL = "https://dev-tasks.alef.im/task-m-001/list.php"
+    private const val BASE_URL = "https://dev-tasks.alef.im/task-m-001/list.php/"
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
