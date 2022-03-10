@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!--    для планшетов-->
+    <integer name="column_count">3</integer>
+
+</resources>

@@ -5,3 +5,6 @@
     android:name="kz.osman.alefimagereader.presentation.ui.ImageListFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
+
+
+
