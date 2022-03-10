@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kz.osman.alefimagereader.Application
 import kz.osman.alefimagereader.R
 import kz.osman.alefimagereader.databinding.FragmentImageListBinding
 import kz.osman.alefimagereader.presentation.adapter.ImageListAdapter
@@ -22,13 +23,12 @@ class ImageListFragment : Fragment() {
     private var _binding: FragmentImageListBinding? = null
     private val binding: FragmentImageListBinding get() = _binding!!
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels { (requireActivity().application as Application).component.viewModelFactory() }
     private val imageListAdapter = ImageListAdapter()
 
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         _binding = FragmentImageListBinding.inflate(layoutInflater, container, false)
         return binding.root
@@ -54,13 +54,14 @@ class ImageListFragment : Fragment() {
         binding.imagesRecycler.adapter = imageListAdapter
     }
 
-    private fun RecyclerView.setGridlayoutColumn(context: Context) {
-        val getColumnCount = resources.getInteger(R.integer.column_count)
-        this.layoutManager = GridLayoutManager(context, getColumnCount)
-    }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    private fun RecyclerView.setGridlayoutColumn(context: Context) {
+        val getColumnCount = resources.getInteger(R.integer.column_count)
+        this.layoutManager = GridLayoutManager(context, getColumnCount)
     }
 }
